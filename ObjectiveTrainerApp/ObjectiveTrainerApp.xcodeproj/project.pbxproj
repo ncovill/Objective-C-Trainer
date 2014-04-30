@@ -30,6 +30,7 @@
 		95E19F481910432F00138842 /* StatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E19F471910432F00138842 /* StatsViewController.m */; };
 		95E19F4B1910433E00138842 /* StatsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E19F4A1910433E00138842 /* StatsModel.m */; };
 		95E19F4E19104A9800138842 /* MenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E19F4D19104A9800138842 /* MenuItem.m */; };
+		95E19F5119118A3700138842 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E19F5019118A3700138842 /* Question.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,8 @@
 		95E19F4A1910433E00138842 /* StatsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsModel.m; sourceTree = "<group>"; };
 		95E19F4C19104A9800138842 /* MenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuItem.h; sourceTree = "<group>"; };
 		95E19F4D19104A9800138842 /* MenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuItem.m; sourceTree = "<group>"; };
+		95E19F4F19118A3700138842 /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Question.h; sourceTree = "<group>"; };
+		95E19F5019118A3700138842 /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Question.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +236,8 @@
 			children = (
 				95E19F4C19104A9800138842 /* MenuItem.h */,
 				95E19F4D19104A9800138842 /* MenuItem.m */,
+				95E19F4F19118A3700138842 /* Question.h */,
+				95E19F5019118A3700138842 /* Question.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -335,6 +340,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				95E19F421910431000138842 /* AboutViewController.m in Sources */,
+				95E19F5119118A3700138842 /* Question.m in Sources */,
 				95E19EFB19103E9A00138842 /* main.m in Sources */,
 				95E19F391910426800138842 /* MenuViewController.m in Sources */,
 				95E19F481910432F00138842 /* StatsViewController.m in Sources */,

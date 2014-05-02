@@ -33,6 +33,7 @@
 		95E19F5119118A3700138842 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E19F5019118A3700138842 /* Question.m */; };
 		95E19F551913612300138842 /* objctrainer.json in Resources */ = {isa = PBXBuildFile; fileRef = 95E19F541913612300138842 /* objctrainer.json */; };
 		95E19F5B1913637000138842 /* ResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E19F5A1913637000138842 /* ResultView.m */; };
+		95E19F5D1914430200138842 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E19F5C1914430200138842 /* MessageUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 		95E19F541913612300138842 /* objctrainer.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = objctrainer.json; sourceTree = "<group>"; };
 		95E19F591913637000138842 /* ResultView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultView.h; sourceTree = "<group>"; };
 		95E19F5A1913637000138842 /* ResultView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultView.m; sourceTree = "<group>"; };
+		95E19F5C1914430200138842 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95E19F5D1914430200138842 /* MessageUI.framework in Frameworks */,
 				95E19EF119103E9A00138842 /* CoreGraphics.framework in Frameworks */,
 				95E19EF319103E9A00138842 /* UIKit.framework in Frameworks */,
 				95E19EEF19103E9A00138842 /* Foundation.framework in Frameworks */,
@@ -136,6 +139,7 @@
 		95E19EED19103E9A00138842 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				95E19F5C1914430200138842 /* MessageUI.framework */,
 				95E19EEE19103E9A00138842 /* Foundation.framework */,
 				95E19EF019103E9A00138842 /* CoreGraphics.framework */,
 				95E19EF219103E9A00138842 /* UIKit.framework */,

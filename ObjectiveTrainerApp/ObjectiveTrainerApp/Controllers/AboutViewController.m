@@ -38,6 +38,31 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)feedbackButtonClicked:(id)sender
+{
+    MFMailComposeViewController *mailComposer = [[MFMailComposeViewController alloc] init];
+    mailComposer.mailComposeDelegate = self;
+    [mailComposer setSubject:@"Objective C Trainer Feedback"];
+    [mailComposer setToRecipients:@[@"ncovill@gmail.com"]];
+    
+    [self presentViewController:mailComposer animated:YES completion:nil];
+}
+
+- (IBAction)rateButtonClicked:(id)sender {
+}
+
+- (IBAction)moreTutorialsButtonClicked:(id)sender
+{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://muttr.com"]];
+}
+
+#pragma mark Mail Compose Delegate Methods
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    // Dismiss the compose controller
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 /*
 #pragma mark - Navigation
 

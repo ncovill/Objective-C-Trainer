@@ -12,9 +12,13 @@
 @interface QuestionViewController ()
 {
     Question *_currentQuestion;
+    
     UIView *_tappablePortionImageQuestion;
     UITapGestureRecognizer *_tapRecognizer;
     UITapGestureRecognizer *_scrollViewTapRecognizer;
+    
+    ResultView *_resultView;
+    UIView *_dimmedBackground;
 }
 
 @end
@@ -54,6 +58,22 @@
     [self randomizeQuestion];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    // Call super implementation
+    [super viewDidAppear:animated];
+    
+    // Create a result view
+    _resultView = [[ResultView alloc] initWithFrame:CGRectMake(10, 10, self.view.frame.size.width - 20, self.view.frame.size.height)];
+    _resultView.delegate = self;
+    
+    // Create dimmed bg
+    _dimmedBackground = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    _dimmedBackground.backgroundColor = [UIColor blackColor];
+    _dimmedBackground.alpha = 0.3;
+    
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -62,14 +82,14 @@
 
 - (void)hideAllQuestionElements
 {
-    self.questionText.hidden = TRUE;
-    self.questionMCAnswer1.hidden = TRUE;
-    self.questionMCAnswer2.hidden = TRUE;
-    self.questionMCAnswer3.hidden = TRUE;
-    self.submitAnswerForBlank.hidden = TRUE;
-    self.blankTextField.hidden = TRUE;
-    self.instructionLabelForBlank.hidden = TRUE;
-    self.questionImageView.hidden = TRUE;
+    self.questionText.hidden = YES;
+    self.questionMCAnswer1.hidden = YES;
+    self.questionMCAnswer2.hidden = YES;
+    self.questionMCAnswer3.hidden = YES;
+    self.submitAnswerForBlank.hidden = YES;
+    self.blankTextField.hidden = YES;
+    self.instructionLabelForBlank.hidden = YES;
+    self.questionImageView.hidden = YES;
     
     // Remove the tappable uiview for image questions
     if (_tappablePortionImageQuestion.superview)
@@ -127,8 +147,14 @@
     // Set question elements
     
     
-    // TODO: Set image
-    self.questionImageView.backgroundColor = [UIColor greenColor];
+    // TODO: Set image and resize image view
+    UIImage *tempImage = [UIImage imageNamed:_currentQuestion.questionImageName];
+    self.questionImageView.image = tempImage;
+    
+    CGRect imageViewFrame = self.questionImageView.frame;
+    imageViewFrame.size.height = tempImage.size.height;
+    imageViewFrame.size.width = tempImage.size.width;
+    self.questionImageView.frame = imageViewFrame;
     
     // Create tappable part
     int tappable_x = self.questionImageView.frame.origin.x + _currentQuestion.offset_x - 10;
@@ -153,9 +179,6 @@
     
     // Set question elements
     self.questionText.text = _currentQuestion.questionText;
-    [self.questionMCAnswer1 setTitle:_currentQuestion.questionAnswer1 forState:UIControlStateNormal];
-    [self.questionMCAnswer2 setTitle:_currentQuestion.questionAnswer2 forState:UIControlStateNormal];
-    [self.questionMCAnswer3 setTitle:_currentQuestion.questionAnswer3 forState:UIControlStateNormal];
     
     // Adjust scroll view
     self.questionScrollView.contentSize = CGSizeMake(self.questionScrollView.frame.size.width, self.skipButton.frame.origin.y + self.skipButton.frame.size.height + 30);
@@ -188,15 +211,36 @@
 {
     UIButton *selectedButton = (UIButton *)sender;
     BOOL isCorrect = NO;
+    NSString *userAnswer;
+    
+    switch (selectedButton.tag) {
+        case 1:
+            userAnswer = _currentQuestion.questionAnswer1;
+            break;
+
+        case 2:
+            userAnswer = _currentQuestion.questionAnswer2;
+            break;
+            
+        case 3:
+            userAnswer = _currentQuestion.questionAnswer3;
+            break;
+            
+        default:
+            break;
+    }
     
     if (selectedButton.tag == _currentQuestion.correctMCAnswerIndex) {
         // User got it right
         isCorrect = YES;
-        
-        // TODO: display message for correct answer
     } else {
         // User got it wrong
     }
+    
+    // Display message for correct answer
+    [_resultView showResultsTextQuestion:isCorrect forUserAnswer:userAnswer forQuestion:_currentQuestion];
+    [self.view addSubview:_dimmedBackground];
+    [self.view addSubview:_resultView];
     
     // Save the question data
     [self saveQuestionData:_currentQuestion.questionType withDifficulty:_currentQuestion.questionDifficulty isCorrect:isCorrect];
@@ -209,6 +253,11 @@
 {
     // User got it right
     
+    // Display message for correct answer
+    [_resultView showResultsImageQuestion:YES forQuestion:_currentQuestion];
+    [self.view addSubview:_dimmedBackground];
+    [self.view addSubview:_resultView];
+
     // Save the question data
     [self saveQuestionData:_currentQuestion.questionType withDifficulty:_currentQuestion.questionDifficulty isCorrect:YES];
     
@@ -218,17 +267,28 @@
 
 - (IBAction)blankSubmitted:(id)sender
 {
+    // Retract keyboard
+    [self.blankTextField resignFirstResponder];
+    
+    // Get answer
     NSString *answer = self.blankTextField.text;
     BOOL isCorrect = NO;
 
+    // Check if answer is right
     if ([answer isEqualToString:_currentQuestion.correctAnswerForBlank]) {
         // User got it right
         isCorrect = YES;
-        
-        // TODO: display message for correct answer
     } else {
         // User got it wrong
     }
+    
+    // Clear the text field
+    self.blankTextField.text = @"";
+    
+    // Display message for correct answer
+    [_resultView showResultsBlankQuestion:isCorrect forUserAnswer:answer forQuestion:_currentQuestion];
+    [self.view addSubview:_dimmedBackground];
+    [self.view addSubview:_resultView];
     
     // Save the question data
     [self saveQuestionData:_currentQuestion.questionType withDifficulty:_currentQuestion.questionDifficulty isCorrect:isCorrect];
@@ -306,6 +366,13 @@
 - (void)scrollViewTapped
 {
     [self.blankTextField resignFirstResponder];
+}
+
+#pragma mark Result View Delegate Methods
+-(void)resultViewDismissed
+{
+    [_dimmedBackground removeFromSuperview];
+    [_resultView removeFromSuperview];
 }
 
 @end

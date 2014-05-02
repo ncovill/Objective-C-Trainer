@@ -1,0 +1,61 @@
+{
+	"easy": [
+		{
+			"type":"mc",
+			"question":"What class do we use to declare a variable to store text?",
+			"answer0":"NSStrings",
+			"answer1":"String",
+			"answer2":"NSString",
+			"correctAnswer":2
+		},
+		{
+			"type":"mc",
+			"question":"If you want to store a value for use in multiple methods in the same class, what are possible options?",
+			"answer0":"Declare and use a property in that class",
+			"answer1":"Declare and use an instance variable",
+			"answer2":"Both answers above can be used",
+			"correctAnswer":2
+		},
+		{
+			"type":"mc",
+			"question":"What does the keyword, IBOutlet, mean?",
+			"answer0":"Denotes a property that connects to an element in your storyboard",
+			"answer1":"Denotes a method that can be connected to an event of a UIElement in the storyboard",
+			"answer2":"Denotes a variable that references an element in your storyboard",
+			"correctAnswer":2
+		},
+		{
+			"type":"image",
+			"imageName":"EasyImage001",
+			"x_coord":100,
+			"y_coord":20,
+			"answerImage":"EasyImage001Answer"
+		},
+		{
+			"type":"image",
+			"imageName":"EasyImage002",
+			"x_coord":30,
+			"y_coord":150,
+			"answerImage":"EasyImage002Answer"
+		},
+		{
+			"type":"image",
+			"imageName":"EasyImage003",
+			"x_coord":100,
+			"y_coord":20,
+			"answerImage":"EasyImage003Answer"
+		},
+		{
+			"type":"blank",
+			"questionCode":"@property (nonatomic, weak) id<_____> delegate;",
+			"answerBlank":"MyProtocol"
+		},
+		{
+			"type":"blank",
+			"questionCode":"[self._____ addSubview:myLabel];",
+			"answerBlank":"view"
+		}
+	],
+	"medium": [],
+	"hard": []
+}

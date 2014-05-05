@@ -17,6 +17,7 @@
     
     MenuItem *item1 = [[MenuItem alloc] init];
     item1.menuTitle = @"Easy Questions";
+    item1.menuIcon = @"IconMenuEasy";
     item1.screenType = ScreenTypeQuestion;
     [menuItemArray addObject:item1];
     

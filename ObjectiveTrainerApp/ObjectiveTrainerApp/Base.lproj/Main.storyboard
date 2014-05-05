@@ -42,7 +42,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" id="bjM-Zc-WuS">
-                                        <rect key="frame" x="55" y="239" width="230" height="63"/>
+                                        <rect key="frame" x="55" y="240" width="230" height="63"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
@@ -55,7 +55,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" id="qh3-fV-bWh">
-                                        <rect key="frame" x="55" y="311" width="230" height="63"/>
+                                        <rect key="frame" x="55" y="310" width="230" height="63"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
@@ -68,7 +68,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" id="L5w-oP-5fm">
-                                        <rect key="frame" x="55" y="383" width="230" height="63"/>
+                                        <rect key="frame" x="55" y="385" width="230" height="63"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
@@ -133,6 +133,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="MyX-nG-ioF"/>
                     <connections>
+                        <outlet property="answerHeaderLabel" destination="7qi-qy-8cM" id="z1Y-w8-2Fz"/>
                         <outlet property="blankTextField" destination="qC2-Rt-LC3" id="QcX-vO-Rzt"/>
                         <outlet property="questionHeaderLabel" destination="2L1-e8-hBg" id="rEM-UM-OdO"/>
                         <outlet property="questionImageView" destination="Be5-v7-mO5" id="Hzl-aR-1pM"/>

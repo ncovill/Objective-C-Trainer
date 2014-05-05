@@ -97,10 +97,32 @@
 
 - (void)hideAllQuestionElements
 {
+    // Hide the header elements
+    self.questionHeaderLabel.alpha = 0;
+    self.answerHeaderLabel.alpha = 0;
+    
+    // Hide question text label and position off screen
     self.questionText.hidden = YES;
+    CGRect questionTextFrame = self.questionText.frame;
+    questionTextFrame.origin.y = 2000;
+    self.questionText.frame = questionTextFrame;
+    
+    // Hide answer buttons and position off screen
     self.questionMCAnswer1.hidden = YES;
+    CGRect buttonFrame = self.questionMCAnswer1.frame;
+    buttonFrame.origin.y = 2000;
+    self.questionMCAnswer1.frame = buttonFrame;
+    
     self.questionMCAnswer2.hidden = YES;
+    buttonFrame = self.questionMCAnswer2.frame;
+    buttonFrame.origin.y = 2000;
+    self.questionMCAnswer2.frame = buttonFrame;
+    
     self.questionMCAnswer3.hidden = YES;
+    buttonFrame = self.questionMCAnswer3.frame;
+    buttonFrame.origin.y = 2000;
+    self.questionMCAnswer3.frame = buttonFrame;
+    
     self.submitAnswerForBlank.hidden = YES;
     self.blankTextField.hidden = YES;
     self.questionImageView.hidden = YES;
@@ -155,6 +177,41 @@
     self.questionMCAnswer1.hidden = NO;
     self.questionMCAnswer2.hidden = NO;
     self.questionMCAnswer3.hidden = NO;
+    
+    // Animate the labels and buttons back to their positions
+    [UIView animateWithDuration:0.5 animations:^(void) {
+        // Position question text
+        CGRect questionTextFrame = self.questionText.frame;
+        questionTextFrame.origin.y = 40;
+        self.questionText.frame = questionTextFrame;
+    }];
+    
+    [UIView animateWithDuration:1 delay:0.1 options:UIViewAnimationOptionCurveEaseOut animations:^(void) {
+        // Position answer 1 text
+        CGRect buttonFrame = self.questionMCAnswer1.frame;
+        buttonFrame.origin.y = 240;
+        self.questionMCAnswer1.frame = buttonFrame;
+    } completion:nil];
+    
+    [UIView animateWithDuration:1 delay:0.2 options:UIViewAnimationOptionCurveEaseOut animations:^(void) {
+        // Position answer 2 text
+        CGRect buttonFrame = self.questionMCAnswer2.frame;
+        buttonFrame.origin.y = 310;
+        self.questionMCAnswer2.frame = buttonFrame;
+    } completion:nil];
+    
+    [UIView animateWithDuration:1 delay:0.3 options:UIViewAnimationOptionCurveEaseOut animations:^(void) {
+        // Position answer 3 text
+        CGRect buttonFrame = self.questionMCAnswer3.frame;
+        buttonFrame.origin.y = 385;
+        self.questionMCAnswer3.frame = buttonFrame;
+    } completion:nil];
+    
+    [UIView animateWithDuration:0.5 delay:1 options:UIViewAnimationOptionCurveEaseOut animations:^(void) {
+        // Reveal the question and answer labels
+        self.questionHeaderLabel.alpha = 1;
+        self.answerHeaderLabel.alpha = 1;
+    } completion:nil];
 }
 
 - (void)displayImageQuestion
